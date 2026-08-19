@@ -370,7 +370,6 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
           </div>
         </div>
       </form>
-
       <iframe name="google-survey-frame" id="google-survey-frame" title="Survey submission response" style="display:none"></iframe>
 
     </div>
@@ -453,14 +452,6 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
     if(guestName)guestName.required=show;
     if(guestEmail)guestEmail.required=show;
 
-    // Google Forms only records fields from sections included in pageHistory.
-    // Section indexes in the source Google Form are:
-    // 0 = starting question
-    // 1 = thinking about a hiatus
-    // 2 = already done it
-    // 3 = potential guest contact details
-    // 4 = podcast topics
-    // 5 = about you
     if(pageHistory){
       if(!isDone()){
         pageHistory.value='0,1,4,5';
@@ -686,9 +677,6 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
   });
 
   survey.addEventListener('submit',function(event){
-    // Let the browser perform the real HTML form POST to Google's formResponse
-    // endpoint. This is more reliable for Google Forms than fetch/no-cors,
-    // especially with multi-section forms.
     if(!validateStep(3)){
       event.preventDefault();
       return;
@@ -702,6 +690,9 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
       submit.disabled=true;
       submit.textContent='Sending…';
     }
+
+    // Do not preventDefault here. The browser posts the form natively to
+    // Google Forms in the hidden iframe, which is more reliable than fetch.
   });
 
   if(frame){
