@@ -46,6 +46,12 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
 .shape-field label,.shape-legend{display:block;font-weight:600;color:var(--ink);margin-bottom:10px;line-height:1.45}
 .shape-help{font-size:.88rem;color:var(--muted);margin:-4px 0 12px}
 .shape-required{color:#b42318;font-weight:700;margin-left:3px}
+
+.shape-error{display:none;color:#b42318;font-size:.86rem;font-weight:600;margin:8px 0 0}
+.shape-error.show{display:block}
+.shape-invalid{border-color:#b42318!important;box-shadow:0 0 0 3px rgba(180,35,24,.10)!important}
+.shape-group-invalid{border:1px solid #b42318;border-radius:16px;padding:10px}
+
 .shape-field textarea,.shape-field select,.shape-field input[type="text"],.shape-field input[type="email"]{width:100%;box-sizing:border-box;border:1px solid rgba(31,54,45,.22);border-radius:16px;background:#fff;color:var(--ink);font:inherit;padding:15px 16px;outline:none}
 .shape-field textarea{min-height:112px;resize:vertical}
 .shape-field textarea:focus,.shape-field select:focus,.shape-field input[type="text"]:focus,.shape-field input[type="email"]:focus{border-color:var(--sage-dark);box-shadow:0 0 0 3px rgba(82,107,91,.10)}
@@ -172,9 +178,9 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
             <p class="shape-section-copy">We’d love to learn from people who’ve already made the leap, including what worked, what didn’t and what you learnt along the way.</p>
 
             <div class="shape-field">
-              <label for="shape-story">Tell us a little about your hiatus.</label>
+              <label for="shape-story">Tell us a little about your hiatus.<span class="shape-required" aria-hidden="true">*</span><span class="sr-only"> required</span></label>
               <p class="shape-help">What did you do, roughly how long did you take away or reduce work, and what made you decide to do it?</p>
-              <textarea id="shape-story" name="entry.37099424"></textarea>
+              <textarea id="shape-story" name="entry.37099424" required></textarea>
             </div>
 
             <div class="shape-field">
@@ -199,8 +205,8 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
             </div>
 
             <div class="shape-field">
-              <label for="shape-again">Would you do it again?</label>
-              <select id="shape-again" name="entry.1349809125">
+              <label for="shape-again">Would you do it again?<span class="shape-required" aria-hidden="true">*</span><span class="sr-only"> required</span></label>
+              <select id="shape-again" name="entry.1349809125" required>
                 <option value="">Choose one</option>
                 <option value="Absolutely">Absolutely</option>
                 <option value="Yes, but I'd do some things differently">Yes, but I'd do some things differently</option>
@@ -211,8 +217,8 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
             </div>
 
             <div class="shape-field">
-              <label for="shape-feature">Would you be open to sharing your story on The Midlife Hiatus podcast?</label>
-              <select id="shape-feature" name="entry.440226367">
+              <label for="shape-feature">Would you be open to sharing your story on The Midlife Hiatus podcast?<span class="shape-required" aria-hidden="true">*</span><span class="sr-only"> required</span></label>
+              <select id="shape-feature" name="entry.440226367" required>
                 <option value="">Choose one</option>
                 <option value="Yes, I’d love to">Yes, I’d love to</option>
                 <option value="Maybe, tell me more">Maybe, tell me more</option>
@@ -248,7 +254,7 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
           <p class="shape-section-copy">Choose up to five. This helps us understand what genuinely deserves a place in the first episodes.</p>
 
           <div class="shape-field">
-            <span class="shape-legend">Which topics would you most like The Midlife Hiatus to explore?</span>
+            <span class="shape-legend">Which topics would you most like The Midlife Hiatus to explore?<span class="shape-required" aria-hidden="true">*</span><span class="sr-only"> required</span></span>
             <div class="shape-options" id="topic-options">
               <label class="shape-option"><input type="checkbox" name="entry.126971985" value="How to make a midlife hiatus work in real life"><span>How to make a midlife hiatus work in real life</span></label>
               <label class="shape-option"><input type="checkbox" name="entry.126971985" value="Taking time off while your kids are still young"><span>Taking time off while your kids are still young</span></label>
@@ -263,6 +269,7 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
               <label class="shape-option"><input type="checkbox" name="entry.126971985" value="Designing a life with more time, not just more money"><span>Designing a life with more time, not just more money</span></label>
               <label class="shape-option"><input type="checkbox" name="entry.126971985" value="The money side of planning a midlife hiatus"><span>The money side of planning a midlife hiatus</span></label>
             </div>
+            <p class="shape-error" id="topics-error">Please choose at least one topic.</p>
           </div>
 
           <div class="shape-field">
@@ -438,8 +445,60 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
 
     setDisabled(futureFields,done);
     setDisabled(doneFields,!done);
-
     updateGuest();
+  }
+
+  function clearErrors(container){
+    if(!container)return;
+    container.querySelectorAll('.shape-invalid').forEach(function(el){
+      el.classList.remove('shape-invalid');
+    });
+    container.querySelectorAll('.shape-error.show').forEach(function(el){
+      el.classList.remove('show');
+    });
+    var topics=document.getElementById('topic-options');
+    if(topics)topics.classList.remove('shape-group-invalid');
+  }
+
+  function validateStep(stepNumber){
+    var step=survey.querySelector('.shape-step[data-step="'+stepNumber+'"]');
+    if(!step)return true;
+
+    clearErrors(step);
+    var valid=true;
+    var firstInvalid=null;
+
+    // Validate visible, enabled HTML-required controls.
+    step.querySelectorAll('input[required], textarea[required], select[required]').forEach(function(el){
+      if(el.disabled || el.offsetParent===null)return;
+      if(!el.checkValidity()){
+        valid=false;
+        el.classList.add('shape-invalid');
+        if(!firstInvalid)firstInvalid=el;
+      }
+    });
+
+    // Topics are a required checkbox group.
+    if(String(stepNumber)==='2'){
+      var topics=Array.prototype.slice.call(
+        document.querySelectorAll('#topic-options input[type="checkbox"]')
+      );
+      var checked=topics.filter(function(box){return box.checked;}).length;
+      if(checked<1){
+        valid=false;
+        var topicWrap=document.getElementById('topic-options');
+        var topicError=document.getElementById('topics-error');
+        if(topicWrap)topicWrap.classList.add('shape-group-invalid');
+        if(topicError)topicError.classList.add('show');
+        if(!firstInvalid && topics.length)firstInvalid=topics[0];
+      }
+    }
+
+    if(!valid && firstInvalid){
+      firstInvalid.focus({preventScroll:true});
+      firstInvalid.scrollIntoView({behavior:'smooth',block:'center'});
+    }
+    return valid;
   }
 
   function showStep(n){
@@ -450,16 +509,20 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
     if(shape)shape.scrollIntoView({behavior:'smooth',block:'start'});
   }
 
-  if(stage)stage.addEventListener('change',updateBranch);
-  if(feature)feature.addEventListener('change',updateGuest);
+  if(stage)stage.addEventListener('change',function(){
+    stage.classList.remove('shape-invalid');
+    updateBranch();
+  });
+  if(feature)feature.addEventListener('change',function(){
+    feature.classList.remove('shape-invalid');
+    updateGuest();
+  });
 
   survey.querySelectorAll('[data-next]').forEach(function(btn){
     btn.addEventListener('click',function(){
-      if(btn.getAttribute('data-next')==='2' && stage && !stage.value){
-        stage.reportValidity();
-        stage.focus();
-        return;
-      }
+      var currentStep=btn.closest('.shape-step');
+      var current=currentStep ? currentStep.getAttribute('data-step') : '1';
+      if(!validateStep(current))return;
       showStep(btn.getAttribute('data-next'));
     });
   });
@@ -477,14 +540,34 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
   topics.forEach(function(box){
     box.addEventListener('change',function(){
       var checked=topics.filter(function(b){return b.checked;}).length;
+
+      // Enforce maximum of five without blocking already selected options.
       topics.forEach(function(b){
         if(!b.checked)b.disabled=checked>=5;
       });
+
+      if(checked>0){
+        var wrap=document.getElementById('topic-options');
+        var error=document.getElementById('topics-error');
+        if(wrap)wrap.classList.remove('shape-group-invalid');
+        if(error)error.classList.remove('show');
+      }
+    });
+  });
+
+  survey.querySelectorAll('input,textarea,select').forEach(function(el){
+    el.addEventListener('input',function(){
+      if(el.checkValidity())el.classList.remove('shape-invalid');
+    });
+    el.addEventListener('change',function(){
+      if(el.checkValidity())el.classList.remove('shape-invalid');
     });
   });
 
   survey.addEventListener('submit',function(event){
     event.preventDefault();
+
+    if(!validateStep(3))return;
 
     var submit=survey.querySelector('.shape-submit');
     if(submit){
@@ -506,6 +589,7 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
       showStep(4);
       survey.reset();
       updateBranch();
+      topics.forEach(function(b){b.disabled=false;});
       if(submit){
         submit.disabled=false;
         submit.textContent='Send my thoughts';
