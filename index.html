@@ -35,25 +35,38 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
 @media(max-width:700px){.wrap{width:min(100% - 28px,1120px)}nav a:first-child{display:none}.hero{min-height:auto;padding:62px 0 76px}.signup{border-radius:22px;flex-direction:column;padding:10px}.signup input{padding:12px 14px}.signup button{width:100%}section{padding:54px 0}.grid{grid-template-columns:1fr;gap:30px}footer{flex-direction:column}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero:before,.hero:after{animation:none}.signup button{transition:none}}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
+
 .shape-card{background:rgba(255,255,255,.72);border:1px solid rgba(31,54,45,.14);border-radius:30px;padding:clamp(26px,5vw,56px);box-shadow:0 18px 60px rgba(31,54,45,.06)}
-.shape-intro{max-width:720px;margin:0 auto 34px;text-align:center}
+.shape-intro{max-width:760px;margin:0 auto 34px;text-align:center}
 .shape-intro h2{margin:12px 0 14px}
-.shape-form{max-width:760px;margin:0 auto}
+.shape-form{max-width:780px;margin:0 auto}
+.shape-step{display:none}
+.shape-step.active{display:block}
 .shape-field{margin:0 0 28px}
 .shape-field label,.shape-legend{display:block;font-weight:600;color:var(--ink);margin-bottom:10px;line-height:1.45}
-.shape-field textarea,.shape-field select{width:100%;box-sizing:border-box;border:1px solid rgba(31,54,45,.22);border-radius:16px;background:#fff;color:var(--ink);font:inherit;padding:15px 16px;outline:none}
+.shape-help{font-size:.88rem;color:var(--muted);margin:-4px 0 12px}
+.shape-field textarea,.shape-field select,.shape-field input[type="text"],.shape-field input[type="email"]{width:100%;box-sizing:border-box;border:1px solid rgba(31,54,45,.22);border-radius:16px;background:#fff;color:var(--ink);font:inherit;padding:15px 16px;outline:none}
 .shape-field textarea{min-height:112px;resize:vertical}
-.shape-field textarea:focus,.shape-field select:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(79,111,93,.10)}
+.shape-field textarea:focus,.shape-field select:focus,.shape-field input[type="text"]:focus,.shape-field input[type="email"]:focus{border-color:var(--sage-dark);box-shadow:0 0 0 3px rgba(82,107,91,.10)}
 .shape-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.shape-option{display:flex;align-items:flex-start;gap:9px;padding:12px 14px;background:rgba(255,255,255,.65);border:1px solid rgba(31,54,45,.12);border-radius:14px}
-.shape-option input{margin-top:3px;accent-color:var(--green)}
-.shape-note{font-size:.86rem;color:var(--muted);line-height:1.55;margin-top:12px}
-.shape-submit{border:0;border-radius:999px;background:var(--ink);color:#fff;font:inherit;font-weight:600;padding:14px 22px;cursor:pointer}
-.shape-submit:hover{opacity:.9}
-.shape-submit:disabled{opacity:.55;cursor:not-allowed}
-@media(max-width:640px){.shape-options{grid-template-columns:1fr}.shape-card{border-radius:24px}}
-
-
+.shape-option{display:flex;align-items:flex-start;gap:9px;padding:12px 14px;background:rgba(255,255,255,.70);border:1px solid rgba(31,54,45,.12);border-radius:14px;cursor:pointer}
+.shape-option input{margin-top:4px;accent-color:var(--sage-dark)}
+.shape-option span{line-height:1.45}
+.shape-subhead{font-family:"Playfair Display",Georgia,serif;font-size:clamp(1.65rem,4vw,2.5rem);font-weight:500;line-height:1.15;margin:0 0 10px;color:var(--ink)}
+.shape-section-copy{color:var(--muted);margin:0 0 26px}
+.shape-actions{display:flex;gap:10px;align-items:center;justify-content:flex-end;margin-top:10px}
+.shape-submit,.shape-next,.shape-back{border:0;border-radius:999px;font:inherit;font-weight:600;padding:14px 22px;cursor:pointer}
+.shape-submit,.shape-next{background:var(--ink);color:#fff}
+.shape-back{background:transparent;color:var(--sage-dark);border:1px solid var(--line)}
+.shape-submit:hover,.shape-next:hover{background:var(--sage-dark)}
+.shape-back:hover{background:rgba(255,255,255,.55)}
+.shape-note{font-size:.82rem;color:var(--muted);line-height:1.55;margin-top:12px;text-align:center}
+.shape-success{text-align:center;padding:30px 10px 12px}
+.shape-success h3{font-family:"Playfair Display",Georgia,serif;font-size:clamp(2rem,5vw,3.3rem);font-weight:500;margin:0 0 8px}
+.shape-success .success-script{font-family:"Caveat",cursive;font-size:2rem;color:var(--sage-dark);margin:18px 0 0}
+.shape-success .success-heart{font-size:1.4rem;margin-top:4px}
+.shape-progress{font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sage-dark);font-weight:600;margin-bottom:18px}
+@media(max-width:640px){.shape-options{grid-template-columns:1fr}.shape-card{border-radius:24px}.shape-actions{flex-direction:column-reverse;align-items:stretch}.shape-submit,.shape-next,.shape-back{width:100%}}
 .brand-logo{display:flex;align-items:center;text-decoration:none}
 .brand-logo img{display:block;width:112px;height:112px;object-fit:contain}
 @media(max-width:640px){.brand-logo img{width:82px;height:82px}}
@@ -86,6 +99,7 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
 <section id="about"><div class="wrap"><div class="card grid"><div><div class="eyebrow"><span class="dot"></span>The idea</div><h2>Money isn't the destination. Time is.</h2></div><div><p class="body-copy">We spend decades saving for a future where work becomes optional. But some of the years we'd most like that freedom are happening much earlier.</p><p class="body-copy">The Midlife Hiatus explores what it could look like to deliberately build enough financial freedom to step away from conventional work for a meaningful period, without waiting for traditional retirement.</p><p class="quote">Because some years of life can't be postponed.</p></div></div></div></section>
 <section id="podcast"><div class="wrap"><div class="card coming"><span class="pill">Coming soon</span><h2>The Midlife Hiatus Podcast</h2><p class="body-copy">Honest conversations about family, careers, money, investing, career breaks and the real question: <strong>could we actually afford to buy back some of our time?</strong></p><p class="body-copy">Join the list and you'll be among the first to hear when the first episode is ready.</p></div></div></section>
 
+
 <section id="shape">
   <div class="wrap">
     <div class="shape-card">
@@ -95,49 +109,250 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
         <p class="body-copy">The Midlife Hiatus is still taking shape. A few honest answers will help make sure it speaks to real family life, rather than just adding another money podcast to the pile.</p>
       </div>
 
-      <form class="shape-form" id="podcast-research-form">
-        <div class="shape-field">
-          <label for="shape-stage">Where are you at right now?</label>
-          <select id="shape-stage" name="stage">
-            <option value="">Choose the closest fit</option>
-            <option>Just starting to think differently about money and time</option>
-            <option>Actively saving or investing for more freedom</option>
-            <option>Considering a career break or family hiatus</option>
-            <option>Already close to being able to take one</option>
-            <option>I've already taken a career break or hiatus</option>
-          </select>
-        </div>
+      <form class="shape-form" id="podcast-research-form"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSeb_zurcvZSmqezOwxMBeBmv2dKUWdXiQ-DIYsgZ1pANedMRQ/formResponse"
+        method="post"
+        target="google-survey-frame">
 
-        <div class="shape-field">
-          <span class="shape-legend">What would you most like the podcast to explore?</span>
-          <div class="shape-options">
-            <label class="shape-option"><input type="checkbox" name="topics" value="How much is enough"><span>Working out how much is enough</span></label>
-            <label class="shape-option"><input type="checkbox" name="topics" value="Saving and investing"><span>Saving and investing for a hiatus</span></label>
-            <label class="shape-option"><input type="checkbox" name="topics" value="Career breaks"><span>Career breaks and returning to work</span></label>
-            <label class="shape-option"><input type="checkbox" name="topics" value="Family and kids"><span>Family life and time with kids</span></label>
-            <label class="shape-option"><input type="checkbox" name="topics" value="Real family stories"><span>Real stories from families doing it</span></label>
-            <label class="shape-option"><input type="checkbox" name="topics" value="Australian money"><span>Australian money, super and tax</span></label>
+        <div class="shape-step active" data-step="1">
+          <div class="shape-progress">1 of 3</div>
+
+          <div class="shape-field">
+            <label for="shape-stage">Where are you at right now?</label>
+            <select id="shape-stage" name="entry.1999026379" required>
+              <option value="">Choose the closest fit</option>
+              <option value="Actively saving or investing for more freedom">Actively saving or investing for more freedom</option>
+              <option value="Considering a career break or family hiatus">Considering a career break or family hiatus</option>
+              <option value="Already close to being able to take one">Already close to being able to take one</option>
+              <option value="I’ve already taken a career break or hiatus">I’ve already taken a career break or hiatus</option>
+            </select>
+          </div>
+
+          <div id="future-hiatus-fields">
+            <div class="shape-field">
+              <span class="shape-legend">What would you most like more time for?</span>
+              <div class="shape-options">
+                <label class="shape-option"><input type="checkbox" name="entry.221440338" value="Being with my kids or family"><span>Being with my kids or family</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.221440338" value="Travel or adventure"><span>Travel or adventure</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.221440338" value="My health and wellbeing"><span>My health and wellbeing</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.221440338" value="Caring responsibilities"><span>Caring responsibilities</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.221440338" value="A passion project or creative work"><span>A passion project or creative work</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.221440338" value="Study or learning something new"><span>Study or learning something new</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.221440338" value="Simply having some breathing room"><span>Simply having some breathing room</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.221440338" value="Working less rather than stopping completely"><span>Working less rather than stopping completely</span></label>
+              </div>
+            </div>
+
+            <div class="shape-field">
+              <span class="shape-legend">What feels like the biggest thing standing in the way?</span>
+              <div class="shape-options">
+                <label class="shape-option"><input type="checkbox" name="entry.1049425369" value="Money"><span>Money</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1049425369" value="Mortgage or other debt"><span>Mortgage or other debt</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1049425369" value="Career impact"><span>Career impact</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1049425369" value="Job security"><span>Job security</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1049425369" value="Superannuation / retirement savings"><span>Superannuation / retirement savings</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1049425369" value="School or childcare"><span>School or childcare</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1049425369" value="My partner and I aren't quite on the same page"><span>My partner and I aren't quite on the same page</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1049425369" value="I'm not sure how much we'd actually need"><span>I'm not sure how much we'd actually need</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1049425369" value="Fear of making the wrong decision"><span>Fear of making the wrong decision</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1049425369" value="It feels irresponsible to step away from work"><span>It feels irresponsible to step away from work</span></label>
+              </div>
+            </div>
+
+            <div class="shape-field">
+              <label for="shape-question">What's the biggest question or worry you'd want answered before taking meaningful time away from work?</label>
+              <textarea id="shape-question" name="entry.1829953430" placeholder="There are no polished answers needed here..."></textarea>
+            </div>
+          </div>
+
+          <div id="done-hiatus-fields" style="display:none">
+            <h3 class="shape-subhead">You’ve actually done it!</h3>
+            <p class="shape-section-copy">We’d love to learn from people who’ve already made the leap, including what worked, what didn’t and what you learnt along the way.</p>
+
+            <div class="shape-field">
+              <label for="shape-story">Tell us a little about your hiatus.</label>
+              <p class="shape-help">What did you do, roughly how long did you take away or reduce work, and what made you decide to do it?</p>
+              <textarea id="shape-story" name="entry.37099424"></textarea>
+            </div>
+
+            <div class="shape-field">
+              <span class="shape-legend">How did you make it work financially?</span>
+              <div class="shape-options">
+                <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="Saved specifically for the break"><span>Saved specifically for the break</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="Investments / passive income"><span>Investments / passive income</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="One partner continued working"><span>One partner continued working</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="Worked part-time"><span>Worked part-time</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="Took paid leave / long service leave"><span>Took paid leave / long service leave</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="Unpaid leave with a job to return to"><span>Unpaid leave with a job to return to</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="Career break without a job to return to"><span>Career break without a job to return to</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="Reduced our expenses"><span>Reduced our expenses</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="Sold assets"><span>Sold assets</span></label>
+              </div>
+            </div>
+
+            <div class="shape-field">
+              <label for="shape-surprise">What surprised you most?</label>
+              <p class="shape-help">What worked, what didn’t, or what do you wish you’d known beforehand?</p>
+              <textarea id="shape-surprise" name="entry.1140545276"></textarea>
+            </div>
+
+            <div class="shape-field">
+              <label for="shape-again">Would you do it again?</label>
+              <select id="shape-again" name="entry.1349809125">
+                <option value="">Choose one</option>
+                <option value="Absolutely">Absolutely</option>
+                <option value="Yes, but I'd do some things differently">Yes, but I'd do some things differently</option>
+                <option value="Maybe">Maybe</option>
+                <option value="Probably not">Probably not</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+
+            <div class="shape-field">
+              <label for="shape-feature">Would you be open to sharing your story on The Midlife Hiatus podcast?</label>
+              <select id="shape-feature" name="entry.440226367">
+                <option value="">Choose one</option>
+                <option value="Yes, I’d love to">Yes, I’d love to</option>
+                <option value="Maybe, tell me more">Maybe, tell me more</option>
+                <option value="Not right now">Not right now</option>
+              </select>
+            </div>
+
+            <div id="guest-contact-fields" style="display:none">
+              <div class="shape-field">
+                <label for="guest-name">First name</label>
+                <input id="guest-name" type="text" name="entry.1054474543">
+              </div>
+              <div class="shape-field">
+                <label for="guest-email">Email address</label>
+                <input id="guest-email" type="email" name="entry.204790824">
+              </div>
+              <div class="shape-field">
+                <label for="guest-extra">Anything else you’d like us to know?</label>
+                <textarea id="guest-extra" name="entry.28606001"></textarea>
+              </div>
+              <p class="shape-help">We’ll only use these details to contact you about potentially sharing your story on The Midlife Hiatus. Saying yes doesn’t commit you to appearing.</p>
+            </div>
+          </div>
+
+          <div class="shape-actions">
+            <button class="shape-next" type="button" data-next="2">Next</button>
           </div>
         </div>
 
-        <div class="shape-field">
-          <label for="shape-question">What's the biggest question or worry you'd want answered before taking meaningful time away from work?</label>
-          <textarea id="shape-question" name="biggest_question" placeholder="There are no polished answers needed here..."></textarea>
+        <div class="shape-step" data-step="2">
+          <div class="shape-progress">2 of 3</div>
+          <h3 class="shape-subhead">What should we talk about?</h3>
+          <p class="shape-section-copy">Choose up to five. This helps us understand what genuinely deserves a place in the first episodes.</p>
+
+          <div class="shape-field">
+            <span class="shape-legend">Which topics would you most like The Midlife Hiatus to explore?</span>
+            <div class="shape-options" id="topic-options">
+              <label class="shape-option"><input type="checkbox" name="entry.126971985" value="How to make a midlife hiatus work in real life"><span>How to make a midlife hiatus work in real life</span></label>
+              <label class="shape-option"><input type="checkbox" name="entry.126971985" value="Taking time off while your kids are still young"><span>Taking time off while your kids are still young</span></label>
+              <label class="shape-option"><input type="checkbox" name="entry.126971985" value="Taking a midlife break when your children are older or have left home"><span>Taking a midlife break when your children are older or have left home</span></label>
+              <label class="shape-option"><input type="checkbox" name="entry.126971985" value="Real stories from families who have actually taken a midlife hiatus"><span>Real stories from families who have actually taken a midlife hiatus</span></label>
+              <label class="shape-option"><input type="checkbox" name="entry.126971985" value="Taking a career break without derailing your career"><span>Taking a career break without derailing your career</span></label>
+              <label class="shape-option"><input type="checkbox" name="entry.126971985" value="Working part-time or differently instead of stopping work completely"><span>Working part-time or differently instead of stopping work completely</span></label>
+              <label class="shape-option"><input type="checkbox" name="entry.126971985" value="Getting your partner on board and making the decision together"><span>Getting your partner on board and making the decision together</span></label>
+              <label class="shape-option"><input type="checkbox" name="entry.126971985" value="The emotional side of stepping away from work"><span>The emotional side of stepping away from work</span></label>
+              <label class="shape-option"><input type="checkbox" name="entry.126971985" value="Returning to work after a hiatus"><span>Returning to work after a hiatus</span></label>
+              <label class="shape-option"><input type="checkbox" name="entry.126971985" value="Travel and extended family adventures"><span>Travel and extended family adventures</span></label>
+              <label class="shape-option"><input type="checkbox" name="entry.126971985" value="Designing a life with more time, not just more money"><span>Designing a life with more time, not just more money</span></label>
+              <label class="shape-option"><input type="checkbox" name="entry.126971985" value="The money side of planning a midlife hiatus"><span>The money side of planning a midlife hiatus</span></label>
+            </div>
+          </div>
+
+          <div class="shape-field">
+            <label for="shape-hear">Who would you love to hear from on the podcast?</label>
+            <p class="shape-help">This could be a particular person, expert, type of family or someone who's made an interesting life choice.</p>
+            <textarea id="shape-hear" name="entry.1680037704"></textarea>
+          </div>
+
+          <div class="shape-field">
+            <label for="shape-more">Is there something you wish people talked about more when it comes to money, work, family and time?</label>
+            <textarea id="shape-more" name="entry.1468083834"></textarea>
+          </div>
+
+          <div class="shape-actions">
+            <button class="shape-back" type="button" data-back="1">Back</button>
+            <button class="shape-next" type="button" data-next="3">Next</button>
+          </div>
         </div>
 
-        <div class="shape-field">
-          <label for="shape-guest">Who would you genuinely want to hear from?</label>
-          <textarea id="shape-guest" name="guests" placeholder="For example: parents who've done it, a financial adviser, career expert, psychologist..."></textarea>
+        <div class="shape-step" data-step="3">
+          <div class="shape-progress">3 of 3</div>
+          <h3 class="shape-subhead">A little about you</h3>
+          <p class="shape-section-copy">These questions help us understand who we're hearing from.</p>
+
+          <div class="shape-field">
+            <label for="shape-age">What age group are you in?</label>
+            <select id="shape-age" name="entry.1951659650">
+              <option value="">Choose one</option>
+              <option value="Under 30">Under 30</option>
+              <option value="30–34">30–34</option>
+              <option value="35–39">35–39</option>
+              <option value="40–44">40–44</option>
+              <option value="45–49">45–49</option>
+              <option value="50–54">50–54</option>
+              <option value="55–59">55–59</option>
+              <option value="60+">60+</option>
+            </select>
+          </div>
+
+          <div class="shape-field">
+            <label for="shape-children">Do you have children?</label>
+            <select id="shape-children" name="entry.785516052">
+              <option value="">Choose one</option>
+              <option value="No">No</option>
+              <option value="Yes, preschool age">Yes, preschool age</option>
+              <option value="Yes, primary school age">Yes, primary school age</option>
+              <option value="Yes, secondary school age">Yes, secondary school age</option>
+              <option value="Yes, adult children">Yes, adult children</option>
+              <option value="Yes, across more than one of these stages">Yes, across more than one of these stages</option>
+            </select>
+          </div>
+
+          <div class="shape-field">
+            <label for="shape-location">Where are you based?</label>
+            <select id="shape-location" name="entry.263818565">
+              <option value="">Choose one</option>
+              <option value="Queensland">Queensland</option>
+              <option value="New South Wales">New South Wales</option>
+              <option value="Victoria">Victoria</option>
+              <option value="Western Australia">Western Australia</option>
+              <option value="South Australia">South Australia</option>
+              <option value="Tasmania">Tasmania</option>
+              <option value="ACT">ACT</option>
+              <option value="Northern Territory">Northern Territory</option>
+              <option value="Outside Australia">Outside Australia</option>
+            </select>
+          </div>
+
+          <div class="shape-field">
+            <label for="shape-final">Anything else you’d like us to know?</label>
+            <textarea id="shape-final" name="entry.826219448"></textarea>
+          </div>
+
+          <div class="shape-actions">
+            <button class="shape-back" type="button" data-back="2">Back</button>
+            <button class="shape-submit" type="submit">Send my thoughts</button>
+          </div>
+
+          <p class="shape-note">Your answers will only be used to help shape The Midlife Hiatus. Contact details are only requested if you choose to hear more about sharing your story.</p>
         </div>
 
-        <div class="shape-field">
-          <label for="shape-wish">If this podcast could help you do one thing differently with your money, work or time, what would you want that to be?</label>
-          <textarea id="shape-wish" name="desired_outcome" placeholder="Tell me what would actually be useful."></textarea>
+        <div class="shape-step" data-step="4">
+          <div class="shape-success">
+            <h3>Thank you.</h3>
+            <p class="body-copy">Your answers will help shape the stories, conversations and questions we explore on The Midlife Hiatus.</p>
+            <p class="success-script">More time for what matters, when it matters most.</p>
+            <div class="shape-success-heart" aria-hidden="true">♡</div>
+          </div>
         </div>
-
-        <button class="shape-submit" type="button" disabled aria-disabled="true">Send my thoughts</button>
-        <p class="shape-note"><strong>One last connection is needed:</strong> the questions are now built into the page, but the button is deliberately disabled until we connect a survey destination so your answers aren't lost.</p>
       </form>
+
+      <iframe name="google-survey-frame" id="google-survey-frame" title="Survey submission response" style="display:none"></iframe>
     </div>
   </div>
 </section>
@@ -178,6 +393,119 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
   }
 })();
 </script>
+
+<script>
+(function(){
+  var survey=document.getElementById('podcast-research-form');
+  if(!survey)return;
+
+  var stage=document.getElementById('shape-stage');
+  var futureFields=document.getElementById('future-hiatus-fields');
+  var doneFields=document.getElementById('done-hiatus-fields');
+  var feature=document.getElementById('shape-feature');
+  var guestFields=document.getElementById('guest-contact-fields');
+  var frame=document.getElementById('google-survey-frame');
+  var submitted=false;
+
+  function isDone(){
+    return stage && stage.value==='I’ve already taken a career break or hiatus';
+  }
+
+  function setDisabled(container,disabled){
+    if(!container)return;
+    container.querySelectorAll('input,textarea,select').forEach(function(el){
+      el.disabled=disabled;
+    });
+  }
+
+  function updateGuest(){
+    var show=isDone() && feature &&
+      (feature.value==='Yes, I’d love to' || feature.value==='Maybe, tell me more');
+
+    if(guestFields)guestFields.style.display=show?'block':'none';
+    setDisabled(guestFields,!show);
+
+    var guestName=document.getElementById('guest-name');
+    var guestEmail=document.getElementById('guest-email');
+    if(guestName)guestName.required=show;
+    if(guestEmail)guestEmail.required=show;
+  }
+
+  function updateBranch(){
+    var done=isDone();
+
+    if(futureFields)futureFields.style.display=done?'none':'block';
+    if(doneFields)doneFields.style.display=done?'block':'none';
+
+    setDisabled(futureFields,done);
+    setDisabled(doneFields,!done);
+
+    updateGuest();
+  }
+
+  function showStep(n){
+    survey.querySelectorAll('.shape-step').forEach(function(step){
+      step.classList.toggle('active',step.getAttribute('data-step')===String(n));
+    });
+    var shape=document.getElementById('shape');
+    if(shape)shape.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  if(stage)stage.addEventListener('change',updateBranch);
+  if(feature)feature.addEventListener('change',updateGuest);
+
+  survey.querySelectorAll('[data-next]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      if(btn.getAttribute('data-next')==='2' && stage && !stage.value){
+        stage.reportValidity();
+        stage.focus();
+        return;
+      }
+      showStep(btn.getAttribute('data-next'));
+    });
+  });
+
+  survey.querySelectorAll('[data-back]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      showStep(btn.getAttribute('data-back'));
+    });
+  });
+
+  var topics=Array.prototype.slice.call(
+    document.querySelectorAll('#topic-options input[type="checkbox"]')
+  );
+
+  topics.forEach(function(box){
+    box.addEventListener('change',function(){
+      var checked=topics.filter(function(b){return b.checked;}).length;
+      topics.forEach(function(b){
+        if(!b.checked)b.disabled=checked>=5;
+      });
+    });
+  });
+
+  survey.addEventListener('submit',function(){
+    submitted=true;
+    var submit=survey.querySelector('.shape-submit');
+    if(submit){
+      submit.disabled=true;
+      submit.textContent='Sending…';
+    }
+  });
+
+  if(frame){
+    frame.addEventListener('load',function(){
+      if(submitted){
+        showStep(4);
+        submitted=false;
+      }
+    });
+  }
+
+  updateBranch();
+})();
+</script>
+
 <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
 <script>fetch("https://assets.mailerlite.com/jsonp/2575157/forms/195742144260998477/takel");</script>
 </body></html>
