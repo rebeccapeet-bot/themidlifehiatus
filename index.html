@@ -155,7 +155,9 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
               <label class="shape-option"><input type="radio" name="entry.221440338" value="Study or learning something new"><span>Study or learning something new</span></label>
               <label class="shape-option"><input type="radio" name="entry.221440338" value="Simply having some breathing room"><span>Simply having some breathing room</span></label>
               <label class="shape-option"><input type="radio" name="entry.221440338" value="Working less rather than stopping completely"><span>Working less rather than stopping completely</span></label>
+              <label class="shape-option"><input type="radio" id="more-time-other-check" name="entry.221440338" value="__other_option__"><span>Other</span></label>
             </div>
+            <input class="shape-other-input" id="more-time-other-text" type="text" name="entry.221440338.other_option_response" placeholder="Tell us what you'd like more time for" disabled>
             <p class="shape-error" id="more-time-error">Please choose one option.</p>
           </div>
 
@@ -166,9 +168,9 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
                 <label class="shape-option"><input type="checkbox" name="entry.1049425369" value="Mortgage or other debt"><span>Mortgage or other debt</span></label>
                 <label class="shape-option"><input type="checkbox" name="entry.1049425369" value="Career impact"><span>Career impact</span></label>
                 <label class="shape-option"><input type="checkbox" name="entry.1049425369" value="Job security"><span>Job security</span></label>
-                <label class="shape-option"><input type="checkbox" name="entry.1049425369" value="Superannuation / retirement savings"><span>Superannuation / retirement savings</span></label>
-                <label class="shape-option"><input type="checkbox" name="entry.1049425369" value="My partner and I aren't quite on the same page"><span>My partner and I aren't quite on the same page</span></label>
-                <label class="shape-option"><input type="checkbox" name="entry.1049425369" value="I'm not sure how much we'd actually need"><span>I'm not sure how much we'd actually need</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1049425369" value="Superannuation/retirement savings"><span>Superannuation/retirement savings</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1049425369" value="My partner and I aren’t quite on the same page"><span>My partner and I aren’t quite on the same page</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1049425369" value="I’m not sure how much we’d actually need"><span>I’m not sure how much we’d actually need</span></label>
                 <label class="shape-option"><input type="checkbox" name="entry.1049425369" value="Fear of making the wrong decision"><span>Fear of making the wrong decision</span></label>
                 <label class="shape-option"><input type="checkbox" name="entry.1049425369" value="It feels irresponsible to step away from work"><span>It feels irresponsible to step away from work</span></label>
                 <label class="shape-option"><input type="checkbox" id="barrier-other-check" name="entry.1049425369" value="__other_option__"><span>Other</span></label>
@@ -197,11 +199,11 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
               <span class="shape-legend">How did you make it work financially?<span class="shape-required" aria-hidden="true">*</span><span class="sr-only"> required</span></span>
               <div class="shape-options">
                 <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="Saved specifically for the break"><span>Saved specifically for the break</span></label>
-                <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="Investments / passive income"><span>Investments / passive income</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="Investments/passive income"><span>Investments/passive income</span></label>
                 <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="One partner continued working"><span>One partner continued working</span></label>
                 <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="Worked part-time"><span>Worked part-time</span></label>
-                <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="Took paid leave / long service leave"><span>Took paid leave / long service leave</span></label>
-                <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="Unpaid leave with a job to return to"><span>Unpaid leave with a job to return to</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="Took paid leave/long service leave"><span>Took paid leave/long service leave</span></label>
+                <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="Took unpaid leave with a job to return to"><span>Took unpaid leave with a job to return to</span></label>
                 <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="Reduce our expenses"><span>Reduce our expenses</span></label>
                 <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="Sold assets"><span>Sold assets</span></label>
               </div>
@@ -309,12 +311,12 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
             <select id="shape-age" name="entry.1951659650">
               <option value="">Choose one</option>
               <option value="Under 30">Under 30</option>
-              <option value="30–34">30–34</option>
-              <option value="35–39">35–39</option>
-              <option value="40–44">40–44</option>
-              <option value="45–49">45–49</option>
-              <option value="50–54">50–54</option>
-              <option value="55–59">55–59</option>
+              <option value="30-34">30-34</option>
+              <option value="35-39">35-39</option>
+              <option value="40-44">40-44</option>
+              <option value="45-49">45-49</option>
+              <option value="50-54">50-54</option>
+              <option value="55-59">55-59</option>
               <option value="60+">60+</option>
             </select>
           </div>
@@ -323,7 +325,7 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
             <label for="shape-children">Do you have children?</label>
             <select id="shape-children" name="entry.785516052">
               <option value="">Choose one</option>
-              <option value="Not at all">Not at all</option>
+              <option value="No">No</option>
               <option value="Yes, preschool age">Yes, preschool age</option>
               <option value="Yes, primary school age">Yes, primary school age</option>
               <option value="Yes, high school school age">Yes, high school school age</option>
@@ -333,7 +335,7 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
           </div>
 
           <div class="shape-field">
-            <label for="shape-location">Where are you based?</label>
+            <label for="shape-location">Which state do you live in? (if outside Australia please list your country in the ‘Other’ section)</label>
             <select id="shape-location" name="entry.263818565">
               <option value="">Choose one</option>
               <option value="Queensland">Queensland</option>
@@ -344,8 +346,9 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
               <option value="Tasmania">Tasmania</option>
               <option value="Canberra">Canberra</option>
               <option value="Northern Territory">Northern Territory</option>
-              <option value="Outside Australia">Outside Australia</option>
+              <option value="__other_option__">Other</option>
             </select>
+              <input class="shape-other-input" id="location-other-text" type="text" name="entry.263818565.other_option_response" placeholder="Country if outside Australia" disabled>
           </div>
 
           <div class="shape-field">
@@ -425,9 +428,13 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
   var guestFields=document.getElementById('guest-contact-fields');
   var pageHistory=document.getElementById('google-page-history');
   var frame=document.getElementById('google-survey-frame');
-  var submitted=false;
   var barrierOtherCheck=document.getElementById('barrier-other-check');
   var barrierOtherText=document.getElementById('barrier-other-text');
+  var moreTimeOtherCheck=document.getElementById('more-time-other-check');
+  var moreTimeOtherText=document.getElementById('more-time-other-text');
+  var location=document.getElementById('shape-location');
+  var locationOtherText=document.getElementById('location-other-text');
+  var submitted=false;
 
   function isDone(){
     return stage && stage.value==='I’ve already taken a career break or hiatus';
@@ -438,6 +445,29 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
     container.querySelectorAll('input,textarea,select').forEach(function(el){
       el.disabled=disabled;
     });
+  }
+
+  function updateMoreTimeOther(){
+    if(!moreTimeOtherCheck || !moreTimeOtherText)return;
+    var on=moreTimeOtherCheck.checked && !moreTimeOtherCheck.disabled;
+    moreTimeOtherText.disabled=!on;
+    moreTimeOtherText.required=on;
+    if(!on)moreTimeOtherText.value='';
+  }
+
+  function updateBarrierOther(){
+    if(!barrierOtherCheck || !barrierOtherText)return;
+    var on=barrierOtherCheck.checked && !barrierOtherCheck.disabled;
+    barrierOtherText.disabled=!on;
+    barrierOtherText.required=on;
+    if(!on)barrierOtherText.value='';
+  }
+
+  function updateLocationOther(){
+    if(!location || !locationOtherText)return;
+    var on=location.value==='__other_option__';
+    locationOtherText.disabled=!on;
+    if(!on)locationOtherText.value='';
   }
 
   function updateGuest(){
@@ -452,6 +482,8 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
     if(guestName)guestName.required=show;
     if(guestEmail)guestEmail.required=show;
 
+    // Google Forms pageHistory is zero-based even though the editor labels
+    // these Section 1, Section 2, etc.
     if(pageHistory){
       if(!isDone()){
         pageHistory.value='0,1,4,5';
@@ -465,14 +497,16 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
 
   function updateBranch(){
     var done=isDone();
-
     if(futureFields)futureFields.style.display=done?'none':'block';
     if(doneFields)doneFields.style.display=done?'block':'none';
 
     setDisabled(futureFields,done);
     setDisabled(doneFields,!done);
+
     updateGuest();
+    updateMoreTimeOther();
     updateBarrierOther();
+    updateLocationOther();
   }
 
   function clearErrors(container){
@@ -483,7 +517,19 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
     container.querySelectorAll('.shape-error.show').forEach(function(el){
       el.classList.remove('show');
     });
-    container.querySelectorAll('.shape-group-invalid').forEach(function(el){el.classList.remove('shape-group-invalid');});
+    container.querySelectorAll('.shape-group-invalid').forEach(function(el){
+      el.classList.remove('shape-group-invalid');
+    });
+  }
+
+  function invalidateGroup(wrapId,errorId,firstControl,state){
+    if(state.valid)return state;
+    var wrap=document.getElementById(wrapId);
+    var err=document.getElementById(errorId);
+    if(wrap)wrap.classList.add('shape-group-invalid');
+    if(err)err.classList.add('show');
+    if(!state.firstInvalid)state.firstInvalid=firstControl;
+    return state;
   }
 
   function validateStep(stepNumber){
@@ -494,8 +540,7 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
     var valid=true;
     var firstInvalid=null;
 
-    // Validate visible, enabled HTML-required controls.
-    step.querySelectorAll('input[required], textarea[required], select[required]').forEach(function(el){
+    step.querySelectorAll('input[required],textarea[required],select[required]').forEach(function(el){
       if(el.disabled || el.offsetParent===null)return;
       if(!el.checkValidity()){
         valid=false;
@@ -504,15 +549,84 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
       }
     });
 
-    // Topics are a required checkbox group.
+    if(String(stepNumber)==='1' && !isDone()){
+      var moreTime=Array.prototype.slice.call(document.querySelectorAll('#more-time-options input[type="radio"]'));
+      if(!moreTime.some(function(el){return el.checked && !el.disabled;})){
+        valid=false;
+        var mtWrap=document.getElementById('more-time-options');
+        var mtErr=document.getElementById('more-time-error');
+        if(mtWrap)mtWrap.classList.add('shape-group-invalid');
+        if(mtErr)mtErr.classList.add('show');
+        if(!firstInvalid && moreTime.length)firstInvalid=moreTime[0];
+      }
+
+      var barriers=Array.prototype.slice.call(document.querySelectorAll('input[name="entry.1049425369"]'));
+      if(!barriers.some(function(el){return el.checked && !el.disabled;})){
+        valid=false;
+        var bWrap=barriers.length?barriers[0].closest('.shape-options'):null;
+        var bErr=document.getElementById('barriers-error');
+        if(bWrap)bWrap.classList.add('shape-group-invalid');
+        if(bErr)bErr.classList.add('show');
+        if(!firstInvalid && barriers.length)firstInvalid=barriers[0];
+      }
+    }
+
+    if(String(stepNumber)==='1' && isDone()){
+      var finance=Array.prototype.slice.call(document.querySelectorAll('input[name="entry.1574708031"]'));
+      if(!finance.some(function(el){return el.checked && !el.disabled;})){
+        valid=false;
+        var fWrap=finance.length?finance[0].closest('.shape-options'):null;
+        var fErr=document.getElementById('finance-method-error');
+        if(fWrap)fWrap.classList.add('shape-group-invalid');
+        if(fErr)fErr.classList.add('show');
+        if(!firstInvalid && finance.length)firstInvalid=finance[0];
+      }
+    }
+
     if(String(stepNumber)==='2'){
-    
+      var topics=Array.prototype.slice.call(document.querySelectorAll('#topic-options input[type="checkbox"]'));
+      if(!topics.some(function(el){return el.checked;})){
+        valid=false;
+        var tWrap=document.getElementById('topic-options');
+        var tErr=document.getElementById('topics-error');
+        if(tWrap)tWrap.classList.add('shape-group-invalid');
+        if(tErr)tErr.classList.add('show');
+        if(!firstInvalid && topics.length)firstInvalid=topics[0];
+      }
+    }
+
+    if(!valid && firstInvalid){
+      firstInvalid.focus({preventScroll:true});
+      firstInvalid.scrollIntoView({behavior:'smooth',block:'center'});
+    }
+    return valid;
+  }
+
+  function showStep(n){
+    survey.querySelectorAll('.shape-step').forEach(function(step){
+      step.classList.toggle('active',step.getAttribute('data-step')===String(n));
+    });
+    var shape=document.getElementById('shape');
+    if(shape)shape.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  if(stage)stage.addEventListener('change',function(){
+    stage.classList.remove('shape-invalid');
+    updateBranch();
+  });
+
+  if(feature)feature.addEventListener('change',updateGuest);
+  if(barrierOtherCheck)barrierOtherCheck.addEventListener('change',updateBarrierOther);
+  if(moreTimeOtherCheck)moreTimeOtherCheck.addEventListener('change',updateMoreTimeOther);
+  if(location)location.addEventListener('change',updateLocationOther);
+
   document.querySelectorAll('input[name="entry.221440338"]').forEach(function(el){
     el.addEventListener('change',function(){
       var wrap=document.getElementById('more-time-options');
       var err=document.getElementById('more-time-error');
       if(wrap)wrap.classList.remove('shape-group-invalid');
       if(err)err.classList.remove('show');
+      updateMoreTimeOther();
     });
   });
 
@@ -535,105 +649,10 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
     });
   });
 
-  var topics=Array.prototype.slice.call(
-        document.querySelectorAll('#topic-options input[type="checkbox"]')
-      );
-      var checked=topics.filter(function(box){return box.checked;}).length;
-      if(checked<1){
-        valid=false;
-        var topicWrap=document.getElementById('topic-options');
-        var topicError=document.getElementById('topics-error');
-        if(topicWrap)topicWrap.classList.add('shape-group-invalid');
-        if(topicError)topicError.classList.add('show');
-        if(!firstInvalid && topics.length)firstInvalid=topics[0];
-      }
-    }
-
-
-    // Required group: what they would like more time for.
-    if(String(stepNumber)==='1' && !isDone()){
-      var moreTime=Array.prototype.slice.call(document.querySelectorAll('#more-time-options input[type="radio"]'));
-      var moreTimeChosen=moreTime.some(function(el){return el.checked && !el.disabled;});
-      if(!moreTimeChosen){
-        valid=false;
-        var moreTimeWrap=document.getElementById('more-time-options');
-        var moreTimeError=document.getElementById('more-time-error');
-        if(moreTimeWrap)moreTimeWrap.classList.add('shape-group-invalid');
-        if(moreTimeError)moreTimeError.classList.add('show');
-        if(!firstInvalid && moreTime.length)firstInvalid=moreTime[0];
-      }
-
-      // Required group: barriers.
-      var barriers=Array.prototype.slice.call(document.querySelectorAll('input[name="entry.1049425369"]'));
-      var barrierChosen=barriers.some(function(el){return el.checked && !el.disabled;});
-      if(!barrierChosen){
-        valid=false;
-        var barriersWrap=barriers.length ? barriers[0].closest('.shape-options') : null;
-        var barriersError=document.getElementById('barriers-error');
-        if(barriersWrap)barriersWrap.classList.add('shape-group-invalid');
-        if(barriersError)barriersError.classList.add('show');
-        if(!firstInvalid && barriers.length)firstInvalid=barriers[0];
-      }
-      if(barrierOtherCheck && barrierOtherCheck.checked && barrierOtherText && !barrierOtherText.value.trim()){
-        valid=false;
-        barrierOtherText.classList.add('shape-invalid');
-        if(!firstInvalid)firstInvalid=barrierOtherText;
-      }
-    }
-
-    // Required group for people who have already taken a hiatus.
-    if(String(stepNumber)==='1' && isDone()){
-      var financeMethods=Array.prototype.slice.call(document.querySelectorAll('input[name="entry.1574708031"]'));
-      var financeChosen=financeMethods.some(function(el){return el.checked && !el.disabled;});
-      if(!financeChosen){
-        valid=false;
-        var financeWrap=financeMethods.length ? financeMethods[0].closest('.shape-options') : null;
-        var financeError=document.getElementById('finance-method-error');
-        if(financeWrap)financeWrap.classList.add('shape-group-invalid');
-        if(financeError)financeError.classList.add('show');
-        if(!firstInvalid && financeMethods.length)firstInvalid=financeMethods[0];
-      }
-    }
-
-    if(!valid && firstInvalid){
-      firstInvalid.focus({preventScroll:true});
-      firstInvalid.scrollIntoView({behavior:'smooth',block:'center'});
-    }
-    return valid;
-  }
-
-  function showStep(n){
-    survey.querySelectorAll('.shape-step').forEach(function(step){
-      step.classList.toggle('active',step.getAttribute('data-step')===String(n));
-    });
-    var shape=document.getElementById('shape');
-    if(shape)shape.scrollIntoView({behavior:'smooth',block:'start'});
-  }
-
-
-  function updateBarrierOther(){
-    if(!barrierOtherCheck || !barrierOtherText)return;
-    var on=barrierOtherCheck.checked && !barrierOtherCheck.disabled;
-    barrierOtherText.disabled=!on;
-    barrierOtherText.required=on;
-    if(!on) barrierOtherText.value='';
-  }
-
-  if(barrierOtherCheck)barrierOtherCheck.addEventListener('change',updateBarrierOther);
-
-  if(stage)stage.addEventListener('change',function(){
-    stage.classList.remove('shape-invalid');
-    updateBranch();
-  });
-  if(feature)feature.addEventListener('change',function(){
-    feature.classList.remove('shape-invalid');
-    updateGuest();
-  });
-
   survey.querySelectorAll('[data-next]').forEach(function(btn){
     btn.addEventListener('click',function(){
       var currentStep=btn.closest('.shape-step');
-      var current=currentStep ? currentStep.getAttribute('data-step') : '1';
+      var current=currentStep?currentStep.getAttribute('data-step'):'1';
       if(!validateStep(current))return;
       showStep(btn.getAttribute('data-next'));
     });
@@ -645,19 +664,13 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
     });
   });
 
-  var topics=Array.prototype.slice.call(
-    document.querySelectorAll('#topic-options input[type="checkbox"]')
-  );
-
+  var topics=Array.prototype.slice.call(document.querySelectorAll('#topic-options input[type="checkbox"]'));
   topics.forEach(function(box){
     box.addEventListener('change',function(){
       var checked=topics.filter(function(b){return b.checked;}).length;
-
-      // Enforce maximum of five without blocking already selected options.
       topics.forEach(function(b){
         if(!b.checked)b.disabled=checked>=5;
       });
-
       if(checked>0){
         var wrap=document.getElementById('topic-options');
         var error=document.getElementById('topics-error');
@@ -690,15 +703,12 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
       submit.disabled=true;
       submit.textContent='Sending…';
     }
-
-    // Do not preventDefault here. The browser posts the form natively to
-    // Google Forms in the hidden iframe, which is more reliable than fetch.
+    // Native POST to Google Forms. Do not call preventDefault here.
   });
 
   if(frame){
     frame.addEventListener('load',function(){
       if(!submitted)return;
-
       submitted=false;
       showStep(4);
 
