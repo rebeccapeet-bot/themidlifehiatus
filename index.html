@@ -371,6 +371,8 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
         </div>
       </form>
 
+      <iframe name="google-survey-frame" id="google-survey-frame" title="Survey submission response" style="display:none"></iframe>
+
     </div>
   </div>
 </section>
@@ -423,6 +425,8 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
   var feature=document.getElementById('shape-feature');
   var guestFields=document.getElementById('guest-contact-fields');
   var pageHistory=document.getElementById('google-page-history');
+  var frame=document.getElementById('google-survey-frame');
+  var submitted=false;
   var barrierOtherCheck=document.getElementById('barrier-other-check');
   var barrierOtherText=document.getElementById('barrier-other-text');
 
@@ -682,45 +686,38 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
   });
 
   survey.addEventListener('submit',function(event){
-    event.preventDefault();
+    // Let the browser perform the real HTML form POST to Google's formResponse
+    // endpoint. This is more reliable for Google Forms than fetch/no-cors,
+    // especially with multi-section forms.
+    if(!validateStep(3)){
+      event.preventDefault();
+      return;
+    }
 
-    if(!validateStep(3))return;
+    updateBranch();
+    submitted=true;
 
     var submit=survey.querySelector('.shape-submit');
     if(submit){
       submit.disabled=true;
       submit.textContent='Sending…';
     }
-
-    updateBranch();
-
-    var params=new URLSearchParams();
-    new FormData(survey).forEach(function(value,key){
-      params.append(key,value);
-    });
-
-    fetch(survey.action,{
-      method:'POST',
-      mode:'no-cors',
-      headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},
-      body:params.toString()
-    }).then(function(){
-      showStep(4);
-      survey.reset();
-      updateBranch();
-      topics.forEach(function(b){b.disabled=false;});
-      if(submit){
-        submit.disabled=false;
-        submit.textContent='Send my thoughts';
-      }
-    }).catch(function(){
-      if(submit){
-        submit.disabled=false;
-        submit.textContent='Send my thoughts';
-      }
-      alert('Sorry, your response could not be sent. Please try again.');
-    });
   });
+
+  if(frame){
+    frame.addEventListener('load',function(){
+      if(!submitted)return;
+
+      submitted=false;
+      showStep(4);
+
+      var submit=survey.querySelector('.shape-submit');
+      if(submit){
+        submit.disabled=false;
+        submit.textContent='Send my thoughts';
+      }
+    });
+  }
 
   updateBranch();
 })();
