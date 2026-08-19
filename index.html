@@ -352,7 +352,6 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
         </div>
       </form>
 
-      <iframe name="google-survey-frame" id="google-survey-frame" title="Survey submission response" style="display:none"></iframe>
     </div>
   </div>
 </section>
@@ -404,8 +403,6 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
   var doneFields=document.getElementById('done-hiatus-fields');
   var feature=document.getElementById('shape-feature');
   var guestFields=document.getElementById('guest-contact-fields');
-  var frame=document.getElementById('google-survey-frame');
-  var submitted=false;
 
   function isDone(){
     return stage && stage.value==='I’ve already taken a career break or hiatus';
@@ -484,23 +481,41 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
     });
   });
 
-  survey.addEventListener('submit',function(){
-    submitted=true;
+  survey.addEventListener('submit',function(event){
+    event.preventDefault();
+
     var submit=survey.querySelector('.shape-submit');
     if(submit){
       submit.disabled=true;
       submit.textContent='Sending…';
     }
-  });
 
-  if(frame){
-    frame.addEventListener('load',function(){
-      if(submitted){
-        showStep(4);
-        submitted=false;
-      }
+    var params=new URLSearchParams();
+    new FormData(survey).forEach(function(value,key){
+      params.append(key,value);
     });
-  }
+
+    fetch(survey.action,{
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},
+      body:params.toString()
+    }).then(function(){
+      showStep(4);
+      survey.reset();
+      updateBranch();
+      if(submit){
+        submit.disabled=false;
+        submit.textContent='Send my thoughts';
+      }
+    }).catch(function(){
+      if(submit){
+        submit.disabled=false;
+        submit.textContent='Send my thoughts';
+      }
+      alert('Sorry, your response could not be sent. Please try again.');
+    });
+  });
 
   updateBranch();
 })();
