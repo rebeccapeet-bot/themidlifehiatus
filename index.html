@@ -245,7 +245,11 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
               </div>
               <div class="shape-field">
                 <label for="guest-email">Email address<span class="shape-required" aria-hidden="true">*</span><span class="sr-only"> required when contact details are requested</span></label>
-                <input id="guest-email" type="email" name="entry.204790824">
+                <input id="guest-email" type="email" name="entry.204790824"
+                       inputmode="email" autocomplete="email"
+                       pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$"
+                       title="Please enter a valid email address, for example name@example.com">
+                <p class="shape-error" id="guest-email-error">Please enter a valid email address.</p>
               </div>
               <div class="shape-field">
                 <label for="guest-extra">Anything else you’d like us to know?</label>
@@ -572,6 +576,20 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
     }
 
     if(String(stepNumber)==='1' && isDone()){
+      var guestEmail=document.getElementById('guest-email');
+      var guestEmailError=document.getElementById('guest-email-error');
+      var guestIsShown=guestFields && guestFields.style.display!=='none';
+      if(guestIsShown && guestEmail && !guestEmail.disabled){
+        var emailValue=guestEmail.value.trim();
+        var strictEmail=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+        if(!strictEmail.test(emailValue)){
+          valid=false;
+          guestEmail.classList.add('shape-invalid');
+          if(guestEmailError)guestEmailError.classList.add('show');
+          if(!firstInvalid)firstInvalid=guestEmail;
+        }
+      }
+
       var finance=Array.prototype.slice.call(document.querySelectorAll('input[name="entry.1574708031"]'));
       if(!finance.some(function(el){return el.checked && !el.disabled;})){
         valid=false;
@@ -683,6 +701,14 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
   survey.querySelectorAll('input,textarea,select').forEach(function(el){
     el.addEventListener('input',function(){
       if(el.checkValidity())el.classList.remove('shape-invalid');
+      if(el.id==='guest-email'){
+        var strictEmail=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+        var err=document.getElementById('guest-email-error');
+        if(strictEmail.test(el.value.trim())){
+          el.classList.remove('shape-invalid');
+          if(err)err.classList.remove('show');
+        }
+      }
     });
     el.addEventListener('change',function(){
       if(el.checkValidity())el.classList.remove('shape-invalid');
