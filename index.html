@@ -121,6 +121,9 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
         action="https://docs.google.com/forms/d/e/1FAIpQLSeb_zurcvZSmqezOwxMBeBmv2dKUWdXiQ-DIYsgZ1pANedMRQ/formResponse"
         method="post"
         target="google-survey-frame">
+        <input type="hidden" name="pageHistory" id="google-page-history" value="0,1,4,5">
+        <input type="hidden" name="fvv" value="1">
+        <input type="hidden" name="submit" value="Submit">
 
         <div class="shape-step active" data-step="1">
           <div class="shape-progress">1 of 3</div>
@@ -419,6 +422,7 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
   var doneFields=document.getElementById('done-hiatus-fields');
   var feature=document.getElementById('shape-feature');
   var guestFields=document.getElementById('guest-contact-fields');
+  var pageHistory=document.getElementById('google-page-history');
   var barrierOtherCheck=document.getElementById('barrier-other-check');
   var barrierOtherText=document.getElementById('barrier-other-text');
 
@@ -444,6 +448,24 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
     var guestEmail=document.getElementById('guest-email');
     if(guestName)guestName.required=show;
     if(guestEmail)guestEmail.required=show;
+
+    // Google Forms only records fields from sections included in pageHistory.
+    // Section indexes in the source Google Form are:
+    // 0 = starting question
+    // 1 = thinking about a hiatus
+    // 2 = already done it
+    // 3 = potential guest contact details
+    // 4 = podcast topics
+    // 5 = about you
+    if(pageHistory){
+      if(!isDone()){
+        pageHistory.value='0,1,4,5';
+      }else if(show){
+        pageHistory.value='0,2,3,4,5';
+      }else{
+        pageHistory.value='0,2,4,5';
+      }
+    }
   }
 
   function updateBranch(){
@@ -669,6 +691,8 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
       submit.disabled=true;
       submit.textContent='Sending…';
     }
+
+    updateBranch();
 
     var params=new URLSearchParams();
     new FormData(survey).forEach(function(value,key){
