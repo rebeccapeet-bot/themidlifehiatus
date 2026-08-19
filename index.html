@@ -45,6 +45,7 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
 .shape-field{margin:0 0 28px}
 .shape-field label,.shape-legend{display:block;font-weight:600;color:var(--ink);margin-bottom:10px;line-height:1.45}
 .shape-help{font-size:.88rem;color:var(--muted);margin:-4px 0 12px}
+.shape-required{color:#b42318;font-weight:700;margin-left:3px}
 .shape-field textarea,.shape-field select,.shape-field input[type="text"],.shape-field input[type="email"]{width:100%;box-sizing:border-box;border:1px solid rgba(31,54,45,.22);border-radius:16px;background:#fff;color:var(--ink);font:inherit;padding:15px 16px;outline:none}
 .shape-field textarea{min-height:112px;resize:vertical}
 .shape-field textarea:focus,.shape-field select:focus,.shape-field input[type="text"]:focus,.shape-field input[type="email"]:focus{border-color:var(--sage-dark);box-shadow:0 0 0 3px rgba(82,107,91,.10)}
@@ -116,9 +117,10 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
 
         <div class="shape-step active" data-step="1">
           <div class="shape-progress">1 of 3</div>
+          <p class="shape-help"><span class="shape-required" aria-hidden="true">*</span> Required question</p>
 
           <div class="shape-field">
-            <label for="shape-stage">Where are you at right now?</label>
+            <label for="shape-stage">Where are you at right now?<span class="shape-required" aria-hidden="true">*</span><span class="sr-only"> required</span></label>
             <select id="shape-stage" name="entry.1999026379" required>
               <option value="">Choose the closest fit</option>
               <option value="Actively saving or investing for more freedom">Actively saving or investing for more freedom</option>
@@ -220,11 +222,11 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
 
             <div id="guest-contact-fields" style="display:none">
               <div class="shape-field">
-                <label for="guest-name">First name</label>
+                <label for="guest-name">First name<span class="shape-required" aria-hidden="true">*</span><span class="sr-only"> required when contact details are requested</span></label>
                 <input id="guest-name" type="text" name="entry.1054474543">
               </div>
               <div class="shape-field">
-                <label for="guest-email">Email address</label>
+                <label for="guest-email">Email address<span class="shape-required" aria-hidden="true">*</span><span class="sr-only"> required when contact details are requested</span></label>
                 <input id="guest-email" type="email" name="entry.204790824">
               </div>
               <div class="shape-field">
