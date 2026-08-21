@@ -121,9 +121,6 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
         action="https://docs.google.com/forms/d/e/1FAIpQLSeb_zurcvZSmqezOwxMBeBmv2dKUWdXiQ-DIYsgZ1pANedMRQ/formResponse"
         method="post"
         target="google-survey-frame">
-        <input type="hidden" name="pageHistory" id="google-page-history" value="0,1,4,5">
-        <input type="hidden" name="fvv" value="1">
-        <input type="hidden" name="submit" value="Submit">
 
         <div class="shape-step active" data-step="1">
           <div class="shape-progress">1 of 3</div>
@@ -206,7 +203,9 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
                 <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="Took unpaid leave with a job to return to"><span>Took unpaid leave with a job to return to</span></label>
                 <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="Reduce our expenses"><span>Reduce our expenses</span></label>
                 <label class="shape-option"><input type="checkbox" name="entry.1574708031" value="Sold assets"><span>Sold assets</span></label>
+                <label class="shape-option"><input type="checkbox" id="finance-other-check" name="entry.1574708031" value="__other_option__"><span>Other</span></label>
               </div>
+              <input class="shape-other-input" id="finance-other-text" type="text" name="entry.1574708031.other_option_response" placeholder="Tell us how else you made it work" disabled>
               <p class="shape-error" id="finance-method-error">Please choose at least one option.</p>
             </div>
 
@@ -430,12 +429,13 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
   var doneFields=document.getElementById('done-hiatus-fields');
   var feature=document.getElementById('shape-feature');
   var guestFields=document.getElementById('guest-contact-fields');
-  var pageHistory=document.getElementById('google-page-history');
   var frame=document.getElementById('google-survey-frame');
   var barrierOtherCheck=document.getElementById('barrier-other-check');
   var barrierOtherText=document.getElementById('barrier-other-text');
   var moreTimeOtherCheck=document.getElementById('more-time-other-check');
   var moreTimeOtherText=document.getElementById('more-time-other-text');
+  var financeOtherCheck=document.getElementById('finance-other-check');
+  var financeOtherText=document.getElementById('finance-other-text');
   var location=document.getElementById('shape-location');
   var locationOtherText=document.getElementById('location-other-text');
   var submitted=false;
@@ -467,6 +467,14 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
     if(!on)barrierOtherText.value='';
   }
 
+  function updateFinanceOther(){
+    if(!financeOtherCheck || !financeOtherText)return;
+    var on=financeOtherCheck.checked && !financeOtherCheck.disabled;
+    financeOtherText.disabled=!on;
+    financeOtherText.required=on;
+    if(!on)financeOtherText.value='';
+  }
+
   function updateLocationOther(){
     if(!location || !locationOtherText)return;
     var on=location.value==='__other_option__';
@@ -485,18 +493,6 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
     var guestEmail=document.getElementById('guest-email');
     if(guestName)guestName.required=show;
     if(guestEmail)guestEmail.required=show;
-
-    // Google Forms pageHistory is zero-based even though the editor labels
-    // these Section 1, Section 2, etc.
-    if(pageHistory){
-      if(!isDone()){
-        pageHistory.value='0,1,4,5';
-      }else if(show){
-        pageHistory.value='0,2,3,4,5';
-      }else{
-        pageHistory.value='0,2,4,5';
-      }
-    }
   }
 
   function updateBranch(){
@@ -510,6 +506,7 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
     updateGuest();
     updateMoreTimeOther();
     updateBarrierOther();
+    updateFinanceOther();
     updateLocationOther();
   }
 
@@ -599,6 +596,11 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
         if(fErr)fErr.classList.add('show');
         if(!firstInvalid && finance.length)firstInvalid=finance[0];
       }
+      if(financeOtherCheck && financeOtherCheck.checked && financeOtherText && !financeOtherText.value.trim()){
+        valid=false;
+        financeOtherText.classList.add('shape-invalid');
+        if(!firstInvalid)firstInvalid=financeOtherText;
+      }
     }
 
     if(String(stepNumber)==='2'){
@@ -636,6 +638,7 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
   if(feature)feature.addEventListener('change',updateGuest);
   if(barrierOtherCheck)barrierOtherCheck.addEventListener('change',updateBarrierOther);
   if(moreTimeOtherCheck)moreTimeOtherCheck.addEventListener('change',updateMoreTimeOther);
+  if(financeOtherCheck)financeOtherCheck.addEventListener('change',updateFinanceOther);
   if(location)location.addEventListener('change',updateLocationOther);
 
   document.querySelectorAll('input[name="entry.221440338"]').forEach(function(el){
@@ -664,6 +667,7 @@ footer{padding:34px 0 48px;color:var(--muted);font-size:.82rem;display:flex;just
       var err=document.getElementById('finance-method-error');
       if(wrap)wrap.classList.remove('shape-group-invalid');
       if(err)err.classList.remove('show');
+      updateFinanceOther();
     });
   });
 
